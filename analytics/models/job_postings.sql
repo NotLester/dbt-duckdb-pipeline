@@ -9,7 +9,7 @@ SELECT
     ,search_date            AS SEARCH_DATE
     ,search_term            AS SEARCH_TERM
 FROM 
-    '../data/raw/raw_job_postings_*.parquet'
+    {{ source('raw', 'job_postings') }}
 WHERE 1=1 
     AND error IS NULL
 ;

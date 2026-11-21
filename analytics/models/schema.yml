@@ -1,0 +1,52 @@
+models:
+  - name: job_postings
+    description: Cleaned postings; nine named columns, scraper error rows removed.
+    config:
+      persist_docs:
+        relation: true
+        columns: true
+    columns:
+      - name: JOB_ID
+        description: The scraper's posting id; re-scraped postings repeat it.
+      - name: JOB_TITLE
+        description: Posting title as scraped; blank on the scraper's error rows.
+      - name: COMPANY_NAME
+        description: Employer name as scraped.
+      - name: JOB_LOCATION
+        description: Posting location as scraped.
+      - name: JOB_VIA
+        description: Posting platform as scraped ('via LinkedIn' — the prefix is the scraper's artifact).
+      - name: JOB_SCHEDULE_TYPE
+        description: Schedule as posted; null when the posting didn't say.
+      - name: JOB_WORK_FROM_HOME
+        description: True when the posting is flagged remote.
+      - name: SEARCH_DATE
+        description: Scrape day.
+      - name: SEARCH_TERM
+        description: Role the scraper searched for.
+
+  - name: jobs_per_month
+    description: Monthly posting counts by role.
+    config:
+      persist_docs:
+        relation: true
+        columns: true
+    columns:
+      - name: MONTH
+        description: Posting month, truncated from search_date.
+      - name: ROLE
+        description: Search role (search_term).
+      - name: POSTINGS
+        description: Postings counted for the role that month.
+
+  - name: top_locations
+    description: Top 10 locations by posting count.
+    config:
+      persist_docs:
+        relation: true
+        columns: true
+    columns:
+      - name: JOB_LOCATION
+        description: Posting location; the grain.
+      - name: POSTINGS
+        description: Postings counted for the location.
