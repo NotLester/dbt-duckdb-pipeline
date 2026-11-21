@@ -2,6 +2,10 @@ name: analytics
 
 profile: analytics
 
+models:
+  analytics:
+    +materialized: table
+
 seed-paths: ["seeds"]
 model-paths: ["models"]
 macro-paths: ["macros"]

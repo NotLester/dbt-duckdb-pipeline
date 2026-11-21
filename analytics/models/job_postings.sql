@@ -1,3 +1,7 @@
+{{  
+    config(materialized='ephemeral') 
+}}
+
 SELECT 
      job_id                 AS JOB_ID
     ,job_title              AS JOB_TITLE
@@ -12,4 +16,3 @@ FROM
     {{ source('raw', 'job_postings') }}
 WHERE 1=1 
     AND error IS NULL
-;

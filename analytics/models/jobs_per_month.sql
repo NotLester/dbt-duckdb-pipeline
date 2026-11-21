@@ -10,4 +10,3 @@ GROUP BY
 ORDER BY
      MONTH 
     ,ROLE
-;
