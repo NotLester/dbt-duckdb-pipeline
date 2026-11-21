@@ -1,4 +1,4 @@
-{{  config(materialized='ephemeral') }}
+{{  config(materialized='view') }}
 
 SELECT 
      job_id                 AS JOB_ID
